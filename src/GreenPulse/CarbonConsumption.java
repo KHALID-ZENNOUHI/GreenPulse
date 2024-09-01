@@ -3,7 +3,7 @@ package GreenPulse;
 import java.time.LocalDate;
 import java.util.UUID;
 
-public class Consumption {
+public class CarbonConsumption {
     private int id;
     private LocalDate startDate;
     private LocalDate endDate;
@@ -11,7 +11,7 @@ public class Consumption {
     private User user;
     private UUID uuid;
 
-    public Consumption(LocalDate startDate, LocalDate endDate, Float carbon , User user) {
+    public CarbonConsumption(LocalDate startDate, LocalDate endDate, Float carbon , User user) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.carbon = carbon;
