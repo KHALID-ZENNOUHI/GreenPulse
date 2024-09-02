@@ -4,23 +4,18 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 public class CarbonConsumption {
-    private int id;
+    private int id = UUID.randomUUID().hashCode();
     private LocalDate startDate;
     private LocalDate endDate;
-    private Float carbon;
+    private float carbon;
     private User user;
-    private UUID uuid;
 
-    public CarbonConsumption(LocalDate startDate, LocalDate endDate, Float carbon , User user) {
+
+    public CarbonConsumption(LocalDate startDate, LocalDate endDate, float carbon , User user) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.carbon = carbon;
         this.user = user;
-        this.id = UUID.randomUUID().hashCode();
-    }
-
-    public UUID generateId(){
-        return this.uuid = UUID.randomUUID();
     }
 
     public int getId() {
@@ -51,7 +46,7 @@ public class CarbonConsumption {
         return carbon;
     }
 
-    public void setCarbon(Float carbon) {
+    public void setCarbon(float carbon) {
         this.carbon = carbon;
     }
 }
