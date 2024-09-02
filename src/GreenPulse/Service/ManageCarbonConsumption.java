@@ -5,6 +5,7 @@ import GreenPulse.User;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,9 +14,15 @@ public class ManageCarbonConsumption {
     private ManageUser manageUser;
     private List<CarbonConsumption> consumptions;
 
+    public ManageCarbonConsumption(ManageUser manageUser) {
+        this.scanner = new Scanner(System.in);
+        this.manageUser = manageUser;
+        this.consumptions = new ArrayList<>();
+    }
+
     public void createCarbonConsumption(){
         System.out.print("Enter the CIN of the user you want to add a consumption to: ");
-        String cin = scanner.next();
+        String cin = this.scanner.next();
         if (manageUser.getUsers().containsKey(cin)) {
             User user = this.manageUser.getUser(cin);
             DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");

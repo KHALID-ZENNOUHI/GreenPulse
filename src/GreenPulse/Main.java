@@ -11,8 +11,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         ManageUser userManager = new ManageUser();
-        GenerateReport report = new GenerateReport();
-        ManageCarbonConsumption carbonConsumptionManager = new ManageCarbonConsumption();
+        GenerateReport report = new GenerateReport(userManager);
+        ManageCarbonConsumption carbonConsumptionManager = new ManageCarbonConsumption(userManager);
         Scanner scanner = new Scanner(System.in);
         while (true){
             System.out.println("<--------Carbon Consumption Management-------->");
@@ -24,7 +24,7 @@ public class Main {
                             "    -> 5. Add consumption:\n" +
                             "    -> 6. Display user consumption:\n" +
                             "    -> 7. Show user carbon consumption reports:\n" +
-                            "    -> 7. Exit\n");
+                            "    -> 8. Exit\n");
             System.out.print("enter your choice: ");
             int choice = scanner.nextInt();
             switch (choice){
@@ -48,6 +48,7 @@ public class Main {
                     break;
                 case 7:
                     report.displayReport();
+                    break;
                 case 8:
                     scanner.close();
                     System.exit(0);

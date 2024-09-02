@@ -10,9 +10,9 @@ public class GenerateReport {
     private Scanner scanner;
     private ManageUser manageUser;
 
-    public GenerateReport() {
+    public GenerateReport(ManageUser manageUser) {
         this.scanner = new Scanner(System.in);
-        this.manageUser = new ManageUser();
+        this.manageUser = manageUser;
     }
 
     public long calculateTotalOfDays(User user) {
@@ -31,20 +31,17 @@ public class GenerateReport {
 
     public void displayReport() {
         System.out.print("enter the cin of the user you want there report: ");
-        String cin = this.scanner.nextLine();
-        double dailyCarbonConsumption = 0;
-        double monthlyCarbonConsumption = 0;
-        double yearlyCarbonConsumption = 0;
+        String cin = this.scanner.next();
         if (this.manageUser.getUsers().containsKey(cin)) {
             User user = this.manageUser.getUser(cin);
-            dailyCarbonConsumption = this.calculateTotalCarbonConsumption(user) / this.calculateTotalOfDays(user);
-            System.out.println("Daily Carbon Consumption of : " + user.getFirstName() + user.getLastName() + "is :" + dailyCarbonConsumption);
-            monthlyCarbonConsumption = this.calculateTotalCarbonConsumption(user) / ((double) this.calculateTotalOfDays(user) / 30);
-            System.out.println("Month Carbon Consumption of : " + user.getFirstName() + user.getLastName() + "is :" + monthlyCarbonConsumption);
-            yearlyCarbonConsumption = this.calculateTotalCarbonConsumption(user) / ((double) this.calculateTotalOfDays(user) / 365);
-            System.out.println("Month Carbon Consumption of : " + user.getFirstName() + user.getLastName() + "is :" + yearlyCarbonConsumption);
+            double dailyCarbonConsumption = this.calculateTotalCarbonConsumption(user) / this.calculateTotalOfDays(user);
+            System.out.println("Daily Carbon Consumption of : " + user.getFirstName() + " " + user.getLastName() + " is :" + dailyCarbonConsumption);
+            double monthlyCarbonConsumption = this.calculateTotalCarbonConsumption(user) / ((double) this.calculateTotalOfDays(user) / 30);
+            System.out.println("Month Carbon Consumption of : " + user.getFirstName() + user.getLastName() + " is :" + monthlyCarbonConsumption);
+            double yearlyCarbonConsumption = this.calculateTotalCarbonConsumption(user) / ((double) this.calculateTotalOfDays(user) / 365);
+            System.out.println("Month Carbon Consumption of : " + user.getFirstName() + " " + user.getLastName() + " is :" + yearlyCarbonConsumption);
 
-        }
+        }else System.out.println("User not found with CIN: " + cin);
     }
 
 
