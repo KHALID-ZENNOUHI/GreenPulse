@@ -1,4 +1,7 @@
-package GreenPulse;
+package GreenPulse.Service;
+
+import GreenPulse.CarbonConsumption;
+import GreenPulse.User;
 
 import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
