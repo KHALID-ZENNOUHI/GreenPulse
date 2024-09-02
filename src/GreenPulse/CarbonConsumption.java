@@ -1,4 +1,6 @@
-package GreenPulse;
+package GreenPulse.Service;
+
+import GreenPulse.User;
 
 import java.time.LocalDate;
 import java.util.UUID;

@@ -70,18 +70,20 @@ public class ManageUser {
     public void manageConsumption(){
         System.out.print("Enter the CIN of the user you want to add a consumption to: ");
         String cin = scanner.next();
-        User user = users.get(cin);
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        System.out.print("enter the value of carbon consumption in kg: ");
-        Float carbonConsumption = this.scanner.nextFloat();
-        System.out.print("enter the start date:");
-        String startDate = this.scanner.next();
-        LocalDate startDateFormatted = LocalDate.parse(startDate, dateTimeFormatter);
-        System.out.print("enter the end date:");
-        String endDate = this.scanner.next();
-        LocalDate endDateFormatted = LocalDate.parse(endDate, dateTimeFormatter);
-        CarbonConsumption consumption = new CarbonConsumption(startDateFormatted, endDateFormatted, carbonConsumption, user);
-        user.addConsumption(consumption);
+        if (users.containsKey(cin)) {
+            User user = this.getUser(cin);
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            System.out.print("enter the value of carbon consumption in kg: ");
+            Float carbonConsumption = this.scanner.nextFloat();
+            System.out.print("enter the start date:");
+            String startDate = this.scanner.next();
+            LocalDate startDateFormatted = LocalDate.parse(startDate, dateTimeFormatter);
+            System.out.print("enter the end date:");
+            String endDate = this.scanner.next();
+            LocalDate endDateFormatted = LocalDate.parse(endDate, dateTimeFormatter);
+            CarbonConsumption consumption = new CarbonConsumption(startDateFormatted, endDateFormatted, carbonConsumption, user);
+            user.addCarbonConsumption(consumption);
+        }else System.out.println("user does not exist!");
     }
 
     public void displayUserConsumptions(){
@@ -96,11 +98,21 @@ public class ManageUser {
             if (consumptions == null || consumptions.isEmpty()) {
                 System.out.println("No consumptions found for user with CIN: " + cin);
             } else {
+                System.out.println("name: " + user.getFirstName() + " " + user.getLastName());
+                System.out.println("age: " + user.getAge());
                 for (CarbonConsumption consumption : consumptions) {
                     System.out.println("carbon consumption: " + consumption.getCarbon() + "kg" + " from: " + consumption.getStartDate() + " to: " + consumption.getEndDate());
                 }
             }
         }
+    }
+
+    public User getUser(String cin){
+        return users.get(cin);
+    }
+
+    public HashMap<String, User> getUsers() {
+        return users;
     }
 
 
