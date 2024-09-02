@@ -9,7 +9,6 @@ public class User {
     private String lastName;
     private int age;
     private List<CarbonConsumption> consumptions;
-//    private List<Report> reports;
 
     public User(String cin, String firstName, String lastName, int age) {
         this.cin = cin;
@@ -64,12 +63,13 @@ public class User {
 //        }
 //    }
 
-    public void addConsumption(CarbonConsumption consumption) {
+    public void addCarbonConsumption(CarbonConsumption consumption) {
         if (consumptions == null) {
             consumptions = new ArrayList<CarbonConsumption>();
         }
         this.consumptions.add(consumption);
     }
+
 
     @Override
     public String toString() {
