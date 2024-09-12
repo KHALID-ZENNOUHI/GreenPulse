@@ -1,17 +1,16 @@
-package GreenPulse;
+package GreenPulse.Entity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private String cin;
+    private int id;
     private String firstName;
     private String lastName;
     private int age;
-    private List<CarbonConsumption> consumptions;
+    private List<CarbonConsumption> carbonConsumptions;
 
-    public User(String cin, String firstName, String lastName, int age) {
-        this.cin = cin;
+    public User(String firstName, String lastName, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -21,12 +20,12 @@ public class User {
 
     }
 
-    public String getCin() {
-        return cin;
+    public int getId() {
+        return id;
     }
 
-    public void setCin(String cin) {
-        this.cin = cin;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -53,31 +52,22 @@ public class User {
         this.age = age;
     }
 
-    public List<CarbonConsumption> getConsumptions() {
-        return consumptions;
-    }
-//
-//    public void setConsumptions(List<Consumption> consumptions) {
-//        if (consumptions == null) {
-//            this.consumptions = new ArrayList<Consumption>();
-//        }
-//    }
-
-    public void addCarbonConsumption(CarbonConsumption consumption) {
-        if (consumptions == null) {
-            consumptions = new ArrayList<CarbonConsumption>();
-        }
-        this.consumptions.add(consumption);
+    public List<CarbonConsumption> getCarbonConsumptions() {
+        return carbonConsumptions;
     }
 
+    public void setCarbonConsumptions(List<CarbonConsumption> carbonConsumptions) {
+        this.carbonConsumptions = carbonConsumptions;
+    }
 
     @Override
     public String toString() {
         return "User{" +
-                "cin=" + cin +
+                "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", age=" + age +
+                ", carbonConsumptions=" + carbonConsumptions +
                 '}';
     }
 }
